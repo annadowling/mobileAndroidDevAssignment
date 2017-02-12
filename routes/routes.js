@@ -27,7 +27,7 @@ module.exports = function(app) {
     app.post('/register',function(req,res){
         var email = req.body.email;
         var firstName = req.body.firstName;
-        var lastName = reg.body.lastName;
+        var lastName = req.body.lastName;
         var password = req.body.password;
  
         register.register(email,firstName,lastName,password,function (found) {

@@ -38,19 +38,6 @@
       <property name="caretWidth" class="java.lang.Integer" />
     </properties>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="modificationStamps">
-      <map>
-        <entry key="$USER_HOME$/Applications/workSpace/ebonding_component" value="1483717074000" />
-        <entry key="$USER_HOME$/Applications/workSpace/ebonding_testing" value="2966566290000" />
-        <entry key="$USER_HOME$/Applications/workSpace/idmsviewsmaintenanceproject" value="2906440740000" />
-        <entry key="$USER_HOME$/Applications/workSpace/soap_component" value="1481805669000" />
-      </map>
-    </option>
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
