@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/node-android.iml" filepath="$PROJECT_DIR$/node-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jobcatcher-node.iml" filepath="$PROJECT_DIR$/jobcatcher-node.iml" />
     </modules>
   </component>
 </project>
