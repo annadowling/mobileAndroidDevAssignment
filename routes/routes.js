@@ -1,8 +1,13 @@
+/**
+ * Created by annadowling on 05/03/2017.
+ */
+
 var chgpass = require('../config/userConfig/chgpass.js');
 var register = require('../config/userConfig/register');
 var login = require('../config/userConfig/login');
 var employerLogin = require('../config/employerConfig/employerLogin');
 var employerRegister = require('../config/employerConfig/registerEmployer');
+var addJob = require('../config/employerConfig/addJob');
 
 
 module.exports = function (app) {
@@ -61,6 +66,19 @@ module.exports = function (app) {
         });
     });
 
+    app.post('/addJob', function (req, res) {
+        var employerEmail = req.body.email;
+        var jobTitle = req.body.jobTitle;
+        var jobDescription = req.body.jobDescription;
+        var address = req.body.address;
+
+
+        addJob.addJob(employerEmail, jobTitle, jobDescription, address, function (found) {
+            console.log(found);
+            res.json(found);
+        });
+    });
+
 
     app.post('/api/chgpass', function (req, res) {
         var id = req.body.id;
@@ -96,6 +114,4 @@ module.exports = function (app) {
             res.json(found);
         });
     });
-
-
 };
