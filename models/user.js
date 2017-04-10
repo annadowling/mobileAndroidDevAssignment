@@ -11,6 +11,7 @@ var userSchema = mongoose.Schema({
     salt : String,
     temp_str:String
 });
- 
-mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');
-module.exports = mongoose.model('users', userSchema);
+
+var conn = mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');
+var User = conn.model('users', userSchema);
+module.exports = User;

@@ -11,7 +11,7 @@ exports.register = function (email, companyName, address, latitude, longitude, p
 
     var x = email;
     if (!(x.indexOf("@") == x.length)) {
-        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) && password.length > 4 && password.match(/[0-9]/) && password.match(/.[!,@,#,$,%,^,&,*,?,_,~]/)) {
+        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) && password.length > 4 && password.match(/[0-9]/)) {
 
             var temp = rand(160, 36);
             var newpass = temp + password;

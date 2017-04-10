@@ -21,5 +21,6 @@ var employerSchema = mongoose.Schema({
     jobs  : { type: ObjectId, ref: job }
 });
 
-mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');
-module.exports = mongoose.model('employers', employerSchema);
+var conn = mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');
+var Employer = conn.model('employers', employerSchema);
+module.exports = Employer;
