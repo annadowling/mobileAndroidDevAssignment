@@ -18,7 +18,7 @@ exports.login = function(email,password,callback) {
             var grav_url = gravatar.url(email, {s: '200', r: 'pg', d: '404'});
             if(hash_db == hashed_password){
 
-                callback({'response':"Employer Login Sucess",'res':true,'token':id,'grav':grav_url});
+                callback({'response':"Employer Login Success",'res':true,'token':id,'grav':grav_url});
 
             }else{
 

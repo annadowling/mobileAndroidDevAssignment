@@ -18,7 +18,7 @@ var hashed_password = crypto.createHash('sha512').update(newpass).digest("hex");
 var grav_url = gravatar.url(email, {s: '200', r: 'pg', d: '404'});
 if(hash_db == hashed_password){
  
-callback({'response':"Login Sucess",'res':true,'token':id,'grav':grav_url});
+callback({'response':"Login Success",'res':true,'token':id,'grav':grav_url});
  
 }else{
  
