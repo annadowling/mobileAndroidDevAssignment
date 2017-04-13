@@ -33,7 +33,7 @@ module.exports = function (app) {
         var email = req.body.email;
         var password = req.body.password;
 
-        employerLogin.login(email, password, function (found) {
+        employerLogin.employerLogin(email, password, function (found) {
             console.log(found);
             res.json(found);
         });

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var gravatar = require('gravatar');
 var employer = require('../../models/employer.js');
 
-exports.login = function(email,password,callback) {
+exports.employerLogin = function(email,password,callback) {
 
     employer.find({email: email},function(err, employers){
 
