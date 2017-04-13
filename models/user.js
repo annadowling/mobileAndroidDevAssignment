@@ -1,13 +1,14 @@
+/**
+ * Created by annadowling on 05/03/2017.
+ */
 var mongoose = require('mongoose');
- 
-var Schema = mongoose.Schema;
  
 var userSchema = mongoose.Schema({
     token : String,
-    email: String,
-    firstName: String,
-    lastName: String,
-    hashed_password: String,
+    email: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    hashed_password: { type: String, required: true },
     salt : String,
     temp_str:String
 });

@@ -1,3 +1,6 @@
+/**
+ * Created by annadowling on 05/03/2017.
+ */
 var crypto = require('crypto');
 var rand = require('csprng');
 var mongoose = require('mongoose');

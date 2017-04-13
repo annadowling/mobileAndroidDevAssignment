@@ -11,14 +11,14 @@ ObjectId = Schema.ObjectId;
 
 var employerSchema = mongoose.Schema({
     token : String,
-    email: String,
-    companyName: String,
-    address: String,
-    latitude: String,
-    longitude: String,
-    hashed_password: String,
+    email: { type: String, required: true },
+    companyName: { type: String, required: true },
+    address: { type: String, required: true },
+    latitude: { type: String, optional: true },
+    longitude: { type: String, optional: true },
+    hashed_password: { type: String, required: true },
     salt : String,
-    jobs  : { type: ObjectId, ref: job }
+    jobsList: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobs'}]
 });
 
 var conn = mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');

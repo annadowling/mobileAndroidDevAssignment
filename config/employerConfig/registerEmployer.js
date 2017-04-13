@@ -22,10 +22,12 @@ exports.register = function (email, companyName, address, latitude, longitude, p
                 token: token,
                 email: email,
                 companyName: companyName,
+                address: address,
                 latitude: latitude,
                 longitude: longitude,
                 hashed_password: hashed_password,
-                salt: temp
+                salt: temp,
+                jobsList: []
             });
 
             employer.find({email: email}, function (err, employers) {
@@ -34,8 +36,12 @@ exports.register = function (email, companyName, address, latitude, longitude, p
 
                 if (len == 0) {
                     newEmployer.save(function (err) {
-
-                        callback({'response': "Sucessfully Registered Employer"});
+                        if (err) {
+                            console.log(err);
+                            callback({'response': "Error during save, please try again!"});
+                        } else {
+                            callback({'response': "Sucessfully Registered Employer"});
+                        }
 
                     });
                 } else {

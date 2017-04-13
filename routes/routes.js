@@ -71,10 +71,9 @@ module.exports = function (app) {
         var employerPhone = req.body.contactNumber;
         var jobTitle = req.body.jobTitle;
         var jobDescription = req.body.jobDescription;
-        var address = req.body.address;
 
 
-        addJob.addJob(employerEmail, employerPhone, jobTitle, jobDescription, address, function (found) {
+        addJob.addJob(employerEmail, employerPhone, jobTitle, jobDescription, function (found) {
             console.log(found);
             res.json(found);
         });
