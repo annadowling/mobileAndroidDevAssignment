@@ -7,7 +7,7 @@ var job = require('../../models/job.js');
 var user = require('../../models/user.js');
 
 
-exports.addJob = function (jobId, userEmail, callback) {
+exports.addJobToUser = function (jobId, userEmail, callback) {
 
     job.findOne({email: userEmail}, function (err, jobRef) {
         if (jobRef) {

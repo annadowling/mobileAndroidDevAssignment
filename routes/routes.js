@@ -8,6 +8,7 @@ var login = require('../config/userConfig/login');
 var employerLogin = require('../config/employerConfig/employerLogin');
 var employerRegister = require('../config/employerConfig/registerEmployer');
 var addJob = require('../config/employerConfig/addJob');
+var addJobToUser = require('../config/userConfig/addJobToUser');
 
 
 module.exports = function (app) {
@@ -110,6 +111,16 @@ module.exports = function (app) {
         var npass = req.body.newpass;
 
         chgpass.respass_chg(email, code, npass, function (found) {
+            console.log(found);
+            res.json(found);
+        });
+    });
+
+    app.post('/addJobToUser', function (req, res) {
+        var jobId = req.body.jobId;
+        var userEmail = req.body.userEmail;
+
+        addJobToUser.addJobToUser(jobId, userEmail, function (found) {
             console.log(found);
             res.json(found);
         });
