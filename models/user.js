@@ -2,6 +2,7 @@
  * Created by annadowling on 05/03/2017.
  */
 var mongoose = require('mongoose');
+var job = require('../models/job.js');
  
 var userSchema = mongoose.Schema({
     token : String,
@@ -10,7 +11,8 @@ var userSchema = mongoose.Schema({
     lastName: { type: String, required: true },
     hashed_password: { type: String, required: true },
     salt : String,
-    temp_str:String
+    temp_str:String,
+    jobsList: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobs'}]
 });
 
 var conn = mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');

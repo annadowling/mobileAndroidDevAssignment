@@ -21,7 +21,8 @@ exports.register = function (email, firstName, lastName, password, callback) {
                 firstName: firstName,
                 lastName: lastName,
                 hashed_password: hashed_password,
-                salt: temp
+                salt: temp,
+                jobsList: []
             });
 
             user.find({email: email}, function (err, users) {
