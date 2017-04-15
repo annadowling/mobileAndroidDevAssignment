@@ -9,6 +9,7 @@ var employerLogin = require('../config/employerConfig/employerLogin');
 var employerRegister = require('../config/employerConfig/registerEmployer');
 var addJob = require('../config/employerConfig/addJob');
 var addJobToUser = require('../config/userConfig/addJobToUser');
+var retrieveUser = require('../config/userConfig/retrieveUser');
 
 
 module.exports = function (app) {
@@ -123,6 +124,17 @@ module.exports = function (app) {
         addJobToUser.addJobToUser(jobId, userEmail, function (found) {
             console.log(found);
             res.json(found);
+        });
+    });
+
+    app.get('/getUserDetails', function (req, res) {
+        var token = req.body.token;
+
+        console.log("Request token is" + req.body.token);
+        retrieveUser.retrieveUser(token, function (found) {
+            console.log(found);
+            //res.json(found);
+            res.send(JSON.stringify(found));
         });
     });
 };
