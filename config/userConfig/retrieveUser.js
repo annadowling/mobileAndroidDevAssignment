@@ -10,9 +10,15 @@ exports.retrieveUser = function (token, callback) {
 
     user.findOne({token: token}, function (err, doc) {
         console.log("user token is " + token);
-        if(doc){
-            callback({'response': "User Found", 'email': doc.email, 'token': doc.token, 'firstName': doc.firstName, 'lastName': doc.lastName});
-        }else{
+        if (doc) {
+            callback({
+                'response': "User Found",
+                'email': doc.email,
+                'token': doc.token,
+                'firstName': doc.firstName,
+                'lastName': doc.lastName
+            });
+        } else {
             callback({'response': "Error retrieving user data!"});
         }
 

@@ -6,6 +6,7 @@ var chgpass = require('../config/userConfig/chgpass.js');
 var register = require('../config/userConfig/register');
 var login = require('../config/userConfig/login');
 var employerLogin = require('../config/employerConfig/employerLogin');
+var retrieveEmployer = require('../config/employerConfig/retrieveEmployer');
 var employerRegister = require('../config/employerConfig/registerEmployer');
 var addJob = require('../config/employerConfig/addJob');
 var addJobToUser = require('../config/userConfig/addJobToUser');
@@ -135,6 +136,20 @@ module.exports = function (app) {
 
         console.log("Request token is " + parsedToken);
         retrieveUser.retrieveUser(parsedToken, function (found) {
+            console.log("found is " + JSON.stringify(found));
+            res.json(found);
+            console.log("response sent");
+        });
+    });
+
+    app.get('/getEmployerDetails/token=:token', function (req, res) {
+
+        var url = req.url;
+        var token = url.split("=");
+        var parsedToken = token[1];
+
+        console.log("Request token is " + parsedToken);
+        retrieveEmployer.retrieveEmployer(parsedToken, function (found) {
             console.log("found is " + JSON.stringify(found));
             res.json(found);
             console.log("response sent");
