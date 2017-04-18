@@ -12,6 +12,9 @@ var userSchema = mongoose.Schema({
     hashed_password: { type: String, required: true },
     salt : String,
     temp_str:String,
+    age: { type: String, required: false },
+    profession: {type: String, required: false},
+    bio: {type: String, required: false},
     jobsList: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobs'}]
 });
 

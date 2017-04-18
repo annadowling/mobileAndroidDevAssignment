@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var user = require('../../models/user.js');
 
 
-exports.retrieveUser = function (token, callback) {
+exports.updateUser = function (token, firstName, lastName, password, age, profession, bio, callback) {
 
     user.findOne({token: token}, function (err, doc) {
         console.log("user token is " + token);
@@ -29,4 +29,3 @@ exports.retrieveUser = function (token, callback) {
 
 
 };
-
