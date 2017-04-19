@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e39c3110-9d06-412b-938f-c5c1d9c9373f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/employerConfig/updateEmployer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/userConfig/updateUser.js" afterPath="$PROJECT_DIR$/config/userConfig/updateUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/routes.js" afterPath="$PROJECT_DIR$/routes/routes.js" />
     </list>
     <ignored path="jobcatcher-node.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,7 +37,7 @@
       <file leaf-file-name="updateEmployer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/employerConfig/updateEmployer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-483">
+            <state relative-caret-position="-166">
               <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
               <folding />
             </state>
@@ -746,12 +743,12 @@
       <workItem from="1492529916385" duration="1091000" />
       <workItem from="1492540164650" duration="2947000" />
       <workItem from="1492603794379" duration="3674000" />
-      <workItem from="1492626311344" duration="780000" />
+      <workItem from="1492626311344" duration="1274000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63131000" />
+    <option name="totallyTimeSpent" value="63625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -1162,7 +1159,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/employerConfig/updateEmployer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-483">
+        <state relative-caret-position="-166">
           <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
           <folding />
         </state>
