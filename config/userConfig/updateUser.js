@@ -1,6 +1,6 @@
 /**
  * Created by annadowling on 07/04/2017.
- * Class for retrieving the logged in User details
+ * Class for updating the logged in User details
  */
 var mongoose = require('mongoose');
 var user = require('../../models/user.js');
