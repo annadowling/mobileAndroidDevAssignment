@@ -13,6 +13,7 @@ var addJobToUser = require('../config/userConfig/addJobToUser');
 var retrieveUser = require('../config/userConfig/retrieveUser');
 var updateUser = require('../config/userConfig/updateUser');
 var updateEmployer = require('../config/employerConfig/updateEmployer');
+var getJobslistEmployer = require('../config/employerConfig/getJobList');
 
 
 module.exports = function (app) {
@@ -191,6 +192,20 @@ module.exports = function (app) {
 
         console.log("Request token is " + parsedToken);
         retrieveEmployer.retrieveEmployer(parsedToken, function (found) {
+            console.log("found is " + JSON.stringify(found));
+            res.json(found);
+            console.log("response sent");
+        });
+    });
+
+    app.get('/getEmployerJobsList/token=:token', function (req, res) {
+
+        var url = req.url;
+        var token = url.split("=");
+        var parsedToken = token[1];
+
+        console.log("Request token is " + parsedToken);
+        getJobslistEmployer.retrieveEmployerJobsList(parsedToken, function (found) {
             console.log("found is " + JSON.stringify(found));
             res.json(found);
             console.log("response sent");
