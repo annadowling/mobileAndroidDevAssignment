@@ -16,26 +16,24 @@ exports.retrieveEmployerJobsList = function (token, callback) {
             var jobsList = doc.jobsList;
             console.log("jobslist is: " + jobsList);
 
-            var counter = jobsList.length;
+            var listLength = jobsList.length;
+            var itemsProcessed = 0;
 
-            jobsList.forEach(function (jobToken, index) {
-                console.log("jobToken is" + jobToken);
-                console.log(jobToken + ' started ...');
+            jobsList.forEach(function (jobToken) {
 
                 job.findOne({_id: jobToken.toString()}, function (err, foundJob) {
                     console.log("found job is " + JSON.stringify(foundJob));
+                    itemsProcessed++;
                     array.push(foundJob);
-                });
+                    console.log("a loop");
 
-                setTimeout(function () {
-                    console.log(index + ': ' + jobToken);
-                    counter -= 1;
-                    if (counter === 0) {
+                    if (itemsProcessed === listLength) { // check if all callbacks have been called
+                        console.log("index is: " + itemsProcessed);
+                        console.log("list length is: " + listLength);
+                        console.log("array is: " + array);
+                        callback({'response': array});
                     }
-                    console.log("array is: " + array);
-                    callback({'response': array});
-                }, jobToken);
-
+                });
             });
         } else {
             callback({'response': "Error retrieving jobs list data!"});
