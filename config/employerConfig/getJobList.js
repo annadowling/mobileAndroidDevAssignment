@@ -5,28 +5,38 @@
 var mongoose = require('mongoose');
 var employer = require('../../models/employer.js');
 var job = require('../../models/job.js');
-var jsonmap = []; // create an empty array
 
 
 exports.retrieveEmployerJobsList = function (token, callback) {
 
     employer.findOne({token: token}, function (err, doc) {
         console.log("employer token is " + token);
+        var array = []; // create an empty array
         if (doc) {
             var jobsList = doc.jobsList;
-            jobsList.forEach(function (jobToken) {
+            console.log("jobslist is: " + jobsList);
+
+            var counter = jobsList.length;
+
+            jobsList.forEach(function (jobToken, index) {
                 console.log("jobToken is" + jobToken);
+                console.log(jobToken + ' started ...');
 
-                job.findOne({token: jobToken._id}, function (err, foundJob) {
-                    jsonmap.push({
-                        key: "job",
-                        value: foundJob
-                    });
-
+                job.findOne({_id: jobToken.toString()}, function (err, foundJob) {
+                    console.log("found job is " + JSON.stringify(foundJob));
+                    array.push(foundJob);
                 });
 
+                setTimeout(function () {
+                    console.log(index + ': ' + jobToken);
+                    counter -= 1;
+                    if (counter === 0) {
+                    }
+                    console.log("array is: " + array);
+                    callback({'response': array});
+                }, jobToken);
+
             });
-            callback(jsonmap);
         } else {
             callback({'response': "Error retrieving jobs list data!"});
         }
