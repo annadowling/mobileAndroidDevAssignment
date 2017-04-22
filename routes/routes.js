@@ -146,14 +146,16 @@ module.exports = function (app) {
         });
     });
 
-    app.delete('/deleteJob/token=:token', function (req, res) {
+    app.delete('/deleteJob', function (req, res) {
 
-        var url = req.url;
-        var token = url.split("=");
-        var parsedToken = token[1];
+        console.log(JSON.stringify(req.headers));
+
+        var parsedToken = req.headers['token'];
+        var parsedEmployerToken = req.headers['employertoken'];
 
         console.log("Request token is " + parsedToken);
-        deleteJob.deleteJob(parsedToken, function (found) {
+        console.log("Request employer token is " + parsedEmployerToken);
+        deleteJob.deleteJob(parsedToken, parsedEmployerToken, function (found) {
             res.json(found);
             console.log("response sent");
         });
