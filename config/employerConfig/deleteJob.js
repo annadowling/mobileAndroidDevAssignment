@@ -13,24 +13,20 @@ var job = require('../../models/job.js');
 
 exports.deleteJob = function (token, employerToken, callback) {
 
-    employer.findOne({token: employerToken}, function (err, doc) {
-        doc.jobsList.ObjectId.remove(mongoose.type.ObjectId(token), function (err) {
-            if (!err) {
-                job.remove({_id: token}, function (err) {
-                    if (!err) {
-                        callback({"response": "Job Deleted"});
-                    }
-                    else {
-                        callback({'response': "Error while deleting job!"});
-                    }
-                });
-            }
-            else {
-                callback({'response': "Error while deleting job from employer!"});
-            }
-        });
+    employer.findOneAndUpdate({token: employerToken}, {$pull: {jobsList: token}}, function (err, data) {
+        if (err) {
+            callback({'response': "Error while deleting job for employer! " });
+        } else {
+            job.remove({_id: token}, function (err) {
+                if (!err) {
+                    callback({"response": "Job Deleted"});
+                }
+                else {
+                    callback({'response': "Error while deleting job!"});
+                }
+            });
+        }
 
     });
-
 
 };
