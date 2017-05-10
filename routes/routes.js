@@ -15,6 +15,8 @@ var updateUser = require('../config/userConfig/updateUser');
 var updateEmployer = require('../config/employerConfig/updateEmployer');
 var getJobslistEmployer = require('../config/employerConfig/getJobList');
 var deleteJob = require('../config/employerConfig/deleteJob');
+var fs = require('fs');
+var getAllJobslist = require('../config/userConfig/getAllJobslist');
 
 
 module.exports = function (app) {
@@ -229,12 +231,22 @@ module.exports = function (app) {
 
     });
 
+    app.get('/getAllJobsList', function (req, res) {
+        getAllJobslist.retrieveJobsList(function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+
+    });
+
     app.post('/upload', function (req, res) {
-        console.log(req.files.image.originalFilename);
-        console.log(req.files.image.path);
-        fs.readFile(req.files.image.path, function (err, data) {
+        console.log("request is " + req.file);
+        var buffer = new Buffer(req.body.file, 'base64')
+        var decodedPath = buffer.toString();
+        console.log("decodedPath is " + decodedPath);
+        fs.readFile(decodedPath, function (err, data) {
             var dirname = "/Users/annadowling/Documents/mscMobileAppDevelopment/jobcatcher-node/file-upload";
-            var newPath = dirname + "/uploads/" + req.files.image.originalFilename;
+            var newPath = dirname + "/uploads/" + decodedPath;
             fs.writeFile(newPath, data, function (err) {
                 if (err) {
                     res.json({'response': "Error"});
