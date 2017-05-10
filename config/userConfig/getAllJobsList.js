@@ -9,17 +9,28 @@ var job = require('../../models/job.js');
 exports.retrieveJobsList = function (callback) {
 
     job.find({}, function (err, jobs) {
-        var jobMap = {};
+        if (jobs) {
+            var array = []; // create an empty array
 
-        jobs.forEach(function (job) {
-            jobMap[job._id] = job;
-        });
+            var listLength = jobs.length;
+            var itemsProcessed = 0;
 
-        if (jobMap) {
-            callback({'response': jobMap});
+            jobs.forEach(function (job) {
+                console.log("found job is " + JSON.stringify(job));
+                itemsProcessed++;
+                array.push(job);
+                console.log("a loop");
+            });
+            if (itemsProcessed === listLength) { // check if all callbacks have been called
+                console.log("index is: " + itemsProcessed);
+                console.log("list length is: " + listLength);
+                console.log("array is: " + array);
+                callback({'response': array});
+            }
         } else {
             callback({'response': "Error retrieving jobs list data!"});
         }
+
     });
 
 };
