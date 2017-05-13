@@ -7,7 +7,9 @@ var jobSchema = mongoose.Schema({
     _id: String,
     jobTitle: { type: String, required: true },
     contactNumber: { type: String, required: true },
-    jobDescription: { type: String, optional: true }
+    jobDescription: { type: String, optional: true },
+    latitude: { type: String, required: true },
+    longitude: { type: String, required: true }
 });
 
 var conn = mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');

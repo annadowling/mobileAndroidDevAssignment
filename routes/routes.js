@@ -80,9 +80,11 @@ module.exports = function (app) {
         var employerPhone = req.body.contactNumber;
         var jobTitle = req.body.jobTitle;
         var jobDescription = req.body.jobDescription;
+        var latitude = req.body.latitude;
+        var longitude = req.body.longitude;
 
 
-        addJob.addJob(employerEmail, employerPhone, jobTitle, jobDescription, function (found) {
+        addJob.addJob(employerEmail, employerPhone, jobTitle, jobDescription, latitude, longitude, function (found) {
             console.log(found);
             res.json(found);
         });

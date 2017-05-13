@@ -7,13 +7,15 @@ var job = require('../../models/job.js');
 var employer = require('../../models/employer.js');
 
 
-exports.addJob = function (employerEmail, employerPhone, jobTitle, jobDescription, callback) {
+exports.addJob = function (employerEmail, employerPhone, jobTitle, jobDescription, latitude, longitude, callback) {
 
     var newJob = new job({
         _id: mongoose.Types.ObjectId(),
         jobTitle: jobTitle,
         contactNumber: employerPhone,
-        jobDescription: jobDescription
+        jobDescription: jobDescription,
+        latitude: latitude,
+        longitude: longitude
 
     });
     console.log(newJob);
