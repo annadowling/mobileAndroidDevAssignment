@@ -13,18 +13,23 @@ exports.updateUser = function (token, firstName, lastName, password, age, profes
         if (doc) {
             if (firstName && firstName != "") {
                 doc.firstName = firstName;
-            } else if (lastName && lastName != "") {
+            }
+            if (lastName && lastName != "") {
                 doc.lastName = lastName;
-            } else if (password && password != "") {
+            }
+            if (password && password != "") {
                 var temp = rand(160, 36);
                 var newpass = temp + password;
                 var hashed_password = crypto.createHash('sha512').update(newpass).digest("hex");
                 doc.hashed_password = hashed_password;
-            } else if (age && age != "") {
+            }
+            if (age && age != "") {
                 doc.age = age;
-            } else if (profession && profession != "") {
+            }
+            if (profession && profession != "") {
                 doc.profession = profession;
-            } else if (bio && bio != "") {
+            }
+            if (bio && bio != "") {
                 doc.bio = bio;
             }
 

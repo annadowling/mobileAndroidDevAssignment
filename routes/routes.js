@@ -18,6 +18,7 @@ var findEmployerAndJob = require('../config/employerConfig/findEmployerAndJob');
 var deleteJob = require('../config/employerConfig/deleteJob');
 var fs = require('fs');
 var getAllJobslist = require('../config/userConfig/getAllJobslist');
+var getAllUsersList = require('../config/userConfig/getAllUsersList');
 
 
 module.exports = function (app) {
@@ -249,6 +250,14 @@ module.exports = function (app) {
 
     app.get('/getAllJobsList', function (req, res) {
         getAllJobslist.retrieveJobsList(function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+
+    });
+
+    app.get('/getAllUsersList', function (req, res) {
+        getAllUsersList.retrieveUsersList(function (found) {
             res.json(found);
             console.log("response sent");
         });
