@@ -56,8 +56,10 @@ module.exports = function (app) {
         var firstName = req.body.firstName;
         var lastName = req.body.lastName;
         var password = req.body.password;
+        var bio = req.body.bio;
+        var profession = req.body.profession;
 
-        register.register(email, firstName, lastName, password, function (found) {
+        register.register(email, firstName, lastName, password, bio, profession, function (found) {
             console.log(found);
             res.json(found);
         });

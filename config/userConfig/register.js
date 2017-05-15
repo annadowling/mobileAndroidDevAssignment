@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var user = require('../../models/user.js');
 
 
-exports.register = function (email, firstName, lastName, password, callback) {
+exports.register = function (email, firstName, lastName, password, bio, profession, callback) {
 
     var x = email;
     if (!(x.indexOf("@") == x.length)) {
@@ -21,6 +21,8 @@ exports.register = function (email, firstName, lastName, password, callback) {
                 firstName: firstName,
                 lastName: lastName,
                 hashed_password: hashed_password,
+                profession: profession,
+                bio: bio,
                 salt: temp,
                 jobsList: []
             });
