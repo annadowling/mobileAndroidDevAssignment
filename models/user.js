@@ -14,8 +14,7 @@ var userSchema = mongoose.Schema({
     temp_str:String,
     age: { type: String, required: false },
     profession: {type: String, required: false},
-    bio: {type: String, required: true},
-    jobsList: [{type: mongoose.Schema.Types.ObjectId, ref: 'jobs'}]
+    bio: {type: String, required: true}
 });
 
 var conn = mongoose.createConnection('mongodb://localhost:27017/jobcatcher-node');

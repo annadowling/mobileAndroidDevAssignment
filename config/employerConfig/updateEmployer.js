@@ -32,13 +32,7 @@ exports.updateEmployer = function (token, companyName, address, password, latitu
                     callback({'response': "Error during save, please try again!"});
                 } else {
                     callback({
-                        'response': "Updated Employer",
-                        'email': doc.email,
-                        'token': doc.token,
-                        'companyName': doc.companyName,
-                        'address': doc.address,
-                        'latitude': doc.latitude || "",
-                        'longitude': doc.longitude || ""
+                        'response': "Updated Employer Details"
                     });
                 }
 

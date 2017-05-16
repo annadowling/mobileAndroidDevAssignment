@@ -39,14 +39,7 @@ exports.updateUser = function (token, firstName, lastName, password, age, profes
                     callback({'response': "Error during save, please try again!"});
                 } else {
                     callback({
-                        'response': "Updated User",
-                        'email': doc.email,
-                        'token': doc.token,
-                        'firstName': doc.firstName,
-                        'lastName': doc.lastName,
-                        'age': doc.age || "",
-                        'profession': doc.profession || "",
-                        'bio': doc.bio || ""
+                        'response': "Updated User Details"
                     });
                 }
 
