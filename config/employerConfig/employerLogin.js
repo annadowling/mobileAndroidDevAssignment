@@ -1,5 +1,6 @@
 /**
  * Created by annadowling on 05/03/2017.
+ * Class for authenticating the employer.
  */
 var crypto = require('crypto');
 var rand = require('csprng');

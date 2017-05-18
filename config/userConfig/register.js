@@ -1,3 +1,8 @@
+/**
+ * Created by annadowling on 07/04/2017.
+ * Class for registering a new user
+ */
+
 var crypto = require('crypto');
 var rand = require('csprng');
 var mongoose = require('mongoose');

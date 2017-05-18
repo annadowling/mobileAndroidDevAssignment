@@ -4,7 +4,7 @@
 
 /**
  * Created by annadowling on 07/04/2017.
- * Class for retrieving the logged in Employer details
+ * Class for removing a job reference from an employer and from the jobs document.
  */
 var mongoose = require('mongoose');
 var employer = require('../../models/employer.js');

@@ -1,6 +1,6 @@
 /**
  * Created by annadowling on 07/04/2017.
- * Class for retrieving the logged in Employer details
+ * Class for retrieving the employer details for a particular job
  */
 var mongoose = require('mongoose');
 var employer = require('../../models/employer.js');

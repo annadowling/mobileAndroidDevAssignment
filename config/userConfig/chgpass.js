@@ -1,3 +1,7 @@
+/**
+ * Created by annadowling on 07/04/2017.
+ * Class for changing a users password
+ */
 var crypto = require('crypto');
 var rand = require('csprng');
 var mongoose = require('mongoose');
