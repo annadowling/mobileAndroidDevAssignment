@@ -1,5 +1,6 @@
 /**
  * Created by annadowling on 05/03/2017.
+ * routes.js sets out the HTTP request routing to the correct node.js fucntions
  */
 
 var chgpass = require('../config/userConfig/chgpass.js');
@@ -30,6 +31,9 @@ module.exports = function (app) {
     });
 
 
+    /**
+     * login post routing
+     */
     app.post('/login', function (req, res) {
         var email = req.body.email;
         var password = req.body.password;
@@ -40,6 +44,9 @@ module.exports = function (app) {
         });
     });
 
+    /**
+     * employerLogin post routing
+     */
     app.post('/employerLogin', function (req, res) {
         var email = req.body.email;
         var password = req.body.password;
@@ -50,7 +57,9 @@ module.exports = function (app) {
         });
     });
 
-
+    /**
+     * register post routing
+     */
     app.post('/register', function (req, res) {
         var email = req.body.email;
         var firstName = req.body.firstName;
@@ -65,6 +74,9 @@ module.exports = function (app) {
         });
     });
 
+    /**
+     * registerEmployer post routing
+     */
     app.post('/registerEmployer', function (req, res) {
         var email = req.body.email;
         var companyName = req.body.companyName;
@@ -79,6 +91,9 @@ module.exports = function (app) {
         });
     });
 
+    /**
+     * addJob post routing
+     */
     app.post('/addJob', function (req, res) {
         var employerEmail = req.body.email;
         var employerPhone = req.body.contactNumber;
@@ -95,6 +110,9 @@ module.exports = function (app) {
     });
 
 
+    /**
+     * changePassword post routing
+     */
     app.post('/api/chgpass', function (req, res) {
         var id = req.body.id;
         var opass = req.body.oldpass;
@@ -107,6 +125,9 @@ module.exports = function (app) {
     });
 
 
+    /**
+     * resetPassword post routing
+     */
     app.post('/api/resetpass', function (req, res) {
 
         var email = req.body.email;
@@ -117,7 +138,9 @@ module.exports = function (app) {
         });
     });
 
-
+    /**
+     * resetPassword change post routing
+     */
     app.post('/api/resetpass/chg', function (req, res) {
 
         var email = req.body.email;
@@ -130,6 +153,9 @@ module.exports = function (app) {
         });
     });
 
+    /**
+     * addJobToUser change post routing
+     */
     app.post('/addJobToUser', function (req, res) {
         var jobId = req.body.jobId;
         var userEmail = req.body.userEmail;
@@ -140,35 +166,10 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/getUserDetails/token=:token', function (req, res) {
 
-        var url = req.url;
-        var token = url.split("=");
-        var parsedToken = token[1];
-
-        console.log("Request token is " + parsedToken);
-        retrieveUser.retrieveUser(parsedToken, function (found) {
-            console.log("found is " + JSON.stringify(found));
-            res.json(found);
-            console.log("response sent");
-        });
-    });
-
-    app.delete('/deleteJob', function (req, res) {
-
-        console.log(JSON.stringify(req.headers));
-
-        var parsedToken = req.headers['token'];
-        var parsedEmployerToken = req.headers['employertoken'];
-
-        console.log("Request token is " + parsedToken);
-        console.log("Request employer token is " + parsedEmployerToken);
-        deleteJob.deleteJob(parsedToken, parsedEmployerToken, function (found) {
-            res.json(found);
-            console.log("response sent");
-        });
-    });
-
+    /**
+     * updateUser via user token post routing
+     */
     app.post('/updateUser/token=:token', function (req, res) {
 
         var url = req.url;
@@ -189,6 +190,9 @@ module.exports = function (app) {
         });
     });
 
+    /**
+     * updateEmployer via employer token post routing
+     */
     app.post('/updateEmployer/token=:token', function (req, res) {
 
         var url = req.url;
@@ -208,64 +212,9 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/getEmployerDetails/token=:token', function (req, res) {
-
-        var url = req.url;
-        var token = url.split("=");
-        var parsedToken = token[1];
-
-        console.log("Request token is " + parsedToken);
-        retrieveEmployer.retrieveEmployer(parsedToken, function (found) {
-            console.log("found is " + JSON.stringify(found));
-            res.json(found);
-            console.log("response sent");
-        });
-    });
-
-    app.get('/getEmployerJobsList/token=:token', function (req, res) {
-
-        var url = req.url;
-        var token = url.split("=");
-        var parsedToken = token[1];
-
-        console.log("Request token is " + parsedToken);
-        getJobslistEmployer.retrieveEmployerJobsList(parsedToken, function (found) {
-            res.json(found);
-            console.log("response sent");
-        });
-
-    });
-
-    app.get('/findEmployerAndJob/token=:token', function (req, res) {
-
-        var url = req.url;
-        var token = url.split("=");
-        var parsedToken = token[1];
-
-        console.log("Request token is " + parsedToken);
-        findEmployerAndJob.retrieveEmployerAndJob(parsedToken, function (found) {
-            res.json(found);
-            console.log("response sent");
-        });
-
-    });
-
-    app.get('/getAllJobsList', function (req, res) {
-        getAllJobslist.retrieveJobsList(function (found) {
-            res.json(found);
-            console.log("response sent");
-        });
-
-    });
-
-    app.get('/getAllUsersList', function (req, res) {
-        getAllUsersList.retrieveUsersList(function (found) {
-            res.json(found);
-            console.log("response sent");
-        });
-
-    });
-
+    /**
+     * upload file post routing
+     */
     app.post('/upload', function (req, res) {
         console.log("request is " + req.file);
         var buffer = new Buffer(req.body.file, 'base64')
@@ -284,7 +233,100 @@ module.exports = function (app) {
         });
     });
 
+    /**
+     * getUserDetails via user token get routing
+     */
+    app.get('/getUserDetails/token=:token', function (req, res) {
 
+        var url = req.url;
+        var token = url.split("=");
+        var parsedToken = token[1];
+
+        console.log("Request token is " + parsedToken);
+        retrieveUser.retrieveUser(parsedToken, function (found) {
+            console.log("found is " + JSON.stringify(found));
+            res.json(found);
+            console.log("response sent");
+        });
+    });
+
+    /**
+     * getEmployerDetails via employer token get routing
+     */
+    app.get('/getEmployerDetails/token=:token', function (req, res) {
+
+        var url = req.url;
+        var token = url.split("=");
+        var parsedToken = token[1];
+
+        console.log("Request token is " + parsedToken);
+        retrieveEmployer.retrieveEmployer(parsedToken, function (found) {
+            console.log("found is " + JSON.stringify(found));
+            res.json(found);
+            console.log("response sent");
+        });
+    });
+
+    /**
+     * getEmployerJobsList via employer token get routing
+     */
+    app.get('/getEmployerJobsList/token=:token', function (req, res) {
+
+        var url = req.url;
+        var token = url.split("=");
+        var parsedToken = token[1];
+
+        console.log("Request token is " + parsedToken);
+        getJobslistEmployer.retrieveEmployerJobsList(parsedToken, function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+
+    });
+
+    /**
+     * findEmployerAndJob via employer token get routing
+     */
+    app.get('/findEmployerAndJob/token=:token', function (req, res) {
+
+        var url = req.url;
+        var token = url.split("=");
+        var parsedToken = token[1];
+
+        console.log("Request token is " + parsedToken);
+        findEmployerAndJob.retrieveEmployerAndJob(parsedToken, function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+
+    });
+
+    /**
+     * getAllJobsList get routing
+     */
+    app.get('/getAllJobsList', function (req, res) {
+        getAllJobslist.retrieveJobsList(function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+
+    });
+
+    /**
+     * getAllUsersList get routing
+     */
+    app.get('/getAllUsersList', function (req, res) {
+        getAllUsersList.retrieveUsersList(function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+
+    });
+
+
+    /**
+     * upload file get routing
+     */
     app.get('/uploads/:file', function (req, res) {
         file = req.params.file;
         var dirname = "/Users/annadowling/Documents/mscMobileAppDevelopment/jobcatcher-node/file-upload";
@@ -293,4 +335,23 @@ module.exports = function (app) {
         res.end(img, 'binary');
 
     });
+
+    /**
+     * deleteJob delete routing
+     */
+    app.delete('/deleteJob', function (req, res) {
+
+        console.log(JSON.stringify(req.headers));
+
+        var parsedToken = req.headers['token'];
+        var parsedEmployerToken = req.headers['employertoken'];
+
+        console.log("Request token is " + parsedToken);
+        console.log("Request employer token is " + parsedEmployerToken);
+        deleteJob.deleteJob(parsedToken, parsedEmployerToken, function (found) {
+            res.json(found);
+            console.log("response sent");
+        });
+    });
+
 };

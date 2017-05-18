@@ -1,5 +1,6 @@
 /**
  * Created by annadowling on 05/03/2017.
+ * User data model
  */
 var mongoose = require('mongoose');
 var job = require('../models/job.js');

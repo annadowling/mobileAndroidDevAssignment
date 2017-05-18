@@ -1,5 +1,6 @@
 /**
  * Created by annadowling on 05/03/2017.
+ * Employer data model
  */
 
 var job = require('../models/job.js');

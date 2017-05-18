@@ -1,5 +1,6 @@
 /**
  * Created by annadowling on 05/03/2017.
+ * Logged in user join table data model
  */
 var mongoose = require('mongoose');
 
